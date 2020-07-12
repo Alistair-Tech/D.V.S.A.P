@@ -22,12 +22,26 @@ Finally, start your kafka server by this command
 #sudo  bin/kafka-server-start.sh config/server.properties
 ```
 
-## Requirements 
-To get our Kafka clients up and running, we’ll need the Kafka-Python installed on our system.
-And, while we’re at it, we’ll also need OpenCV for video rendering, as well as Flask for our “distributed” Consumer.
-To install these three, run the following command.
+## Installing dependencies using pipenv
+To install all the dependencies involved, we first need to install pipenv by using pip.
 ```bash
-pip install kafka-python opencv-contrib-python Flask
+pip install pipenv
+```
+The Pipfile contains all the dependencies and to install them, we need to change to project directory and run the following command:
+```bash
+cd [Project Directory]
+pipenv install
+```
+The above command actually creates a virtual environment in which all the dependencies are installed.
+Now to run the python codes, you need to enter the virtual environemnt using the following command:
+```bash
+pipenv shell
+```
+We now can run the below python codes in this environment. 
+
+If you would like to exit the environment at any moment, type exit.
+```bash
+exit
 ```
 
 ## Python Code
