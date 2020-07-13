@@ -1,2 +1,1 @@
-# Distributed-Video-Stream-Analytics-Platform (DVSAP)
-Distributed video stream analytics using Kafka, Opencv and Spark
+# Multiple video streaming using kafka, python and mongodb.
