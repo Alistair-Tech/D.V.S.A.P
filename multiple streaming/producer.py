@@ -5,13 +5,14 @@ from kafka import KafkaProducer
 from multiprocessing import Process
 import pymongo
 
-
+#connect to database
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 mydb = myclient["video"]
+#collection
 mycol = mydb["user"]
 camera_urls = []
 
-
+#retrieves data from database and makes the list of urls.
 cursor = mycol.find({})
 for document in cursor:
         camera_urls.append(document['url'])
