@@ -66,5 +66,5 @@ pipenv run python consumer.py
 ## Getting Results
 In the shell, you will get a link.
 To view our streams, we can do that in 2 ways.
-1. **Different streams in different window**: For n streams, open n terminals and in each terminal, put url as -> link/cam/1, link/cam/2 .... upto link/cam/n.
-2. **Different streams in single window**: For n streams, open a terminal and give it url as -> link/cameras/n
+1. **Different streams in different window**: For n streams, open n tabs in browser and in each tab, put url as -> link/cam/1, link/cam/2 .... upto link/cam/n.
+2. **Different streams in single window**: For n streams, open a tab in browser and give it url as -> link/cameras/n
