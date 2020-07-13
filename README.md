@@ -44,28 +44,52 @@ If you would like to exit the environment at any moment, type exit.
 exit
 ```
 
+## Setting up the database from which RTSP links will be queried
+Before running the python codes, we will have to set up a database of RTSP links.
+
+
 ## Python Code
 Now everything is set up from kafka and you can now move on to our python code.
 
 ### Producer File
 The first of our Kafka clients will be the message Producer. Here it will be responsible for converting video to a stream of JPEG images.
-As you can see, the Producer defaults by streaming video directly from the web cam — assuming you have one. If pulling from a video file is more your style, the Producer accepts a file name as a command-line argument.
+As you can see, the Producer first queries the RTSP links stored in a database and stores it. 
+
+We have a VideoStreaming producer process class that writes to a kafka topic the JPEG images converted to bytes from a given RTSP link. To facilitate simultaneous writing of different streams to kafka, we take advantage of partitions in a topic. 
+
+We now start one process for each of the RTSP links and they write to their respective partitions simultaneously. 
 
 ### Consumer File
-To read our newly published stream, we’ll need a Consumer that accesses our Kafka topic. Since our message streamer was intended for a distributed system, we’ll keep our project in that spirit and launch our Consumer as a Flask service.
-
+To read our newly published stream, we’ll need a Consumer that accesses our Kafka topic. Since our message streamer was intended for a distributed system, we’ll keep our project in that spirit and launch our Consumer as a Flask service. 
 
 ## Running the project
 First start consumer file by opening new terminal and entering this command.
 ```bash
-env FLASK_ENV=development FLASK_APP=consumer.py flask run
+python consumer.py
 ```
-We are using this command so that our code runs in flask development enviroment.
-After running this, we will get a link in the terminal. In the browser, go to link/video . You won’t see anything here yet, but keep it open cuz it’s about to come to life.
+After running this, we will get a [link] in the terminal. 
+
+There are 2 types of routes in which streams can be viewed in browser.
+
+The first route is as follows:
+```bash
+[link]/cam/[cam_num]
+```
+This route consumes the stream of a specific camera denoted by <cam_num>.
+
+The second route is as follows:
+```bash
+[link]/cameras/[cam_nums]
+```
+This route consumes multiple streams and displays all of them in one page. The [cam_nums] denote the number of streams to be displayed in the page.
+
+Note: Flask is unable to load more than 6 streams at once. It displays 'waiting for available socket' if more than 6 streams are called at once. We are working on it.
+
+You won’t see anything here yet, but keep it open cuz it’s about to come to life.
 
 After this we can run producer code with RTSP link as argument.
 
 ```bash
-python3 producer.py rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov
+python producer.py
 ```
-Then when we refresh the link, we will see our video being streamed in the browser. If you don't pass any arguments, then it will automatically get access to your webcam and stream the video.
+Then when we refresh the link, we will see our video(s) being streamed in the browser.
