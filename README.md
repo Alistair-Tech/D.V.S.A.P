@@ -1,4 +1,4 @@
-# Multiple video streaming using kafka, python and mongodb.
+# Distributed-Video-Stream-Analytics-Platform (DVSAP)
 In this project, we are streaming multiple videos using apache kafka and python. Also, we are using mongodb to store urls in our database and pymongo to access urls from database.
 
 ## Downloading and Installing mongodb
