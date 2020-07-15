@@ -3,7 +3,7 @@ from flask import Flask, Response, render_template, request, redirect
 from kafka import KafkaConsumer, TopicPartition
 
 # topic name
-topic = 'multi-video'
+topic = 'video'
 
 # number of modules
 N = 3
