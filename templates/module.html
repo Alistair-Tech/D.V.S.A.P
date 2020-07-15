@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>RTSP Streams</title>
+		<title>Module {mno + 1}</title>
 		<style>
 body 
 	{
@@ -19,7 +19,7 @@ body
 	</head>
 	<body>
 		<center>
-		<h1> Active Cameras </h1>
+		<h1> Module {mno} </h1>
 		</center>
 		<br> <br> <br> <br> <br> <br> <br>
 		<br> <br> <br> <br> <br> <br> <br>
@@ -28,10 +28,9 @@ body
 			{% for number in cam_nums %}								
 			<div>
 				<img class="img-responsive" src="{{ url_for('cam',camno=number) }}">
-				<figcaption>CAMERA : {{ number+1 }}</figcaption>
+				<figcaption>CAMERA : { number+1 }</figcaption>
 			</div>
 			{% endfor %}
 		</div>
 	</body>
 </html>
-
