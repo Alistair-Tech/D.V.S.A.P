@@ -27,15 +27,6 @@ def module(mno):
         print(m[mno])
     return render_template("module.html", cam_nums=m[mno], mno=mno)
 
-@app.route('/module2/cams', methods=['GET', 'POST'])
-def module2cam():
-    if request.method == 'POST':
-        m2 = request.form.getlist('module2')
-        for i in range(len(m2)):
-            m2[i] = int(m2[i])
-        print(m2)
-    return render_template("video2.html", cam_nums=m2)
-
 @app.route('/cam/<camno>')
 def cam(camno):
     consumer = KafkaConsumer(bootstrap_servers=['localhost:9092'])
