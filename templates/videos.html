@@ -1,37 +1,31 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>RTSP Streams</title>
-		<style>
-body 
-	{
-	background-color: grey;
-}
-		.container
-			{
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: space-evenly;
-			align-items: flex-start;
+<head>
+	<title>RTSP Streams</title>
+	<style>
+		body 
+		{
+  		background-color: grey;
 		}
-		</style>
-	</head>
-	<body>
-		<center>
-		<h1> Active Cameras </h1>
-		</center>
-		<br> <br> <br> <br> <br> <br> <br>
-		<br> <br> <br> <br> <br> <br> <br>
-		<div class="container">
+		.container
+		{
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: space-evenly;
+				align-items: flex-start;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
 			<!-- displaying streams from all cameras-->	
 			{% for number in cam_nums %}								
-			<div>
-				<img class="img-responsive" src="{{ url_for('cam',camno=number) }}">
-				<figcaption>CAMERA : {{ number+1 }}</figcaption>
-			</div>
+				<div>
+					<img class="img-responsive" src="{{ url_for('cam',cam_num=number) }}">
+					<figcaption>CAMERA : {{ number+1 }}</figcaption>
+				</div>
 			{% endfor %}
-		</div>
-	</body>
+	</div>
+</body>
 </html>
-

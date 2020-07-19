@@ -1,14 +1,11 @@
-
 from flask import Flask, Response, render_template
 from kafka import KafkaConsumer, TopicPartition
 
 # Fire up the Kafka Consumer
 topic = "video"
 
-
 # Set the consumer in a Flask App
 app = Flask(__name__)
-
 
 # route to display stream of one camera
 @app.route("/cam/<cam_num>")
@@ -29,13 +26,11 @@ def cam(cam_num):
 def get_video_stream(consumer):
     """
     Here is where we recieve streamed images from the Kafka Server and convert 
-
     them to a Flask-readable format.
     """
     for msg in consumer:
         yield (b'--frame\r\n'
                b'Content-Type: image/jpg\r\n\r\n' + msg.value + b'\r\n\r\n')
-
 
 # route to display stream of multiple cameras
 @app.route("/cameras/<camera_numbers>")
@@ -45,4 +40,3 @@ def get_cameras(camera_numbers):
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=3000, debug=True)
-

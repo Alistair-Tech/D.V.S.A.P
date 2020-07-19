@@ -2,7 +2,6 @@ import sys
 import time
 import cv2
 from kafka import KafkaProducer
-
 from multiprocessing import Process
 import pymongo
 
