@@ -43,6 +43,11 @@ Finally, make kafka topic with required number of partitions. For example,if we 
 ```bash
 # ./bin/kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 2 --topic video
 ```
+
+# Installing Spark
+For setting up spark on your system, check out this site: [link](https://phoenixnap.com/kb/install-spark-on-ubuntu).
+
+
 # Installing Dependencies
 
 ### Installing dependencies using pipenv for producer and consumer file
