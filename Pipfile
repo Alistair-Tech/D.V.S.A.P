@@ -6,10 +6,11 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-flask = "*"
 opencv-python = "*"
 kafka-python = "*"
+flask = "*"
 pymongo = "*"
+imutils = "*"
 
 [requires]
 python_version = "3.6"
